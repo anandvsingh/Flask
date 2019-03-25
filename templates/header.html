@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" , href="{{url_for('static',filename='favicon.ico')}}">
+        <title>Test 1</title>
+        <link  href="{{url_for('static',filename='css/bootstrap.min.css')}}", rel="stylesheet">
+    </head>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/">
+                <img style="max-width:30px; max-height: 30px; margin-top: -7px;" src="{{ url_for('static', filename='images/mainlogo.png') }}">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                    <div class="button my-2 my-lg-0" id="loginButton">
+                            <a role="presentation" data-toggle="modal" data-target="#loginModal" href="#"><button class="btn btn-outline-success my-2 my-sm-0"  type="button">Login</button></a>
+                            <div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" style="text-align:center">Login</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                                <form action="" class="form-inline" method="post">
+                                                    <input type="text" class="form-control mr-2" placeholder="Username" name="username" value="">
+                                                    <input type="password" class="form-control my-2" placeholder="Password" name="password" value="">
+                                                    <input class="btn btn-primary mr-5 mt-2" type="submit" value="Login">                                                    
+                                                </form>
+                                                    <div class="container my-lg-3">
+                                                    <p>No account? <role="presentation" class="active" data-toggle="modal" data-target="#register" href="#"><button class="btn btn-outline-success my-2 my-sm-0 " data-dismiss="modal" type="button">Sign Up</button></a>.</p>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <a role="presentation" class="active" data-toggle="modal" data-target="#register" href="#"> <button class="btn btn-outline-success my-2 my-sm-0 ml-3"  type="button">Sign Up</button></a><h5>
+                            <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">Register</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">					  
+                                            <form method=post action="/register">
+                                                <dl>							
+                                                    <dt><label for="username">Username</label>
+                                                    <dd><input id="username" name="username" type="text" value=""></dd>
+                                                    <dt><label for="email">Email Address</label>
+                                                    <dd><input id="email" name="email" type="text" value=""> </dd>
+                                                    <dt><label for="password">New Password</label>
+                                                    <dd><input id="password" name="password" type="password" value=""></dd>
+                                                    <dt><label for="confirm">Repeat Password</label>
+                                                    <dd><input id="confirm" name="confirm" type="password" value=""></dd>
+                                                    <dt><label for="accept_tos">I accept the <a href="/about/tos" target="blank">Terms of Service</a> and <a href="/about/privacy-policy" target="blank">Privacy Notice</a></label>
+                                                    <dd><input id="accept_tos" name="accept_tos" type="checkbox" value="y"></dd>
+                                            </dl>
+                                        <p><input type=submit value=Register>
+                                    </form>					  
+                                </div>
+                                </div>              
+                            </div>
+                        </div>
+                        </div>
+        </nav>
+    </header>
+    <body>
+        <div class="border-row" style="width:100%; margin:3">
+        <div class="container-fluid" style="min-height: 100%">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible  fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {%block body%}        {%endblock%}
+        </div>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    </body>
+</html>

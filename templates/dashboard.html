@@ -1,0 +1,33 @@
+{%extends "header.html"%}
+
+{%block body%}
+<div role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs my-2 " id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active nav-tabs-success" id="system-tab" data-toggle="tab" href="#system" role="tab" aria-controls="system" aria-selected="true">System stauts</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="false">Data Analysis</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="false">User Settings</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <!-- Tab panes -->
+                <div class="tab-pane fade show active" id="system" role="tabpanel" aria-labelledby="data-tab">
+                <ul>
+                  {% for t in TOPIC_DICT["sysStatus"] %}
+                    <li><a href="{{t[1]}}">{{t[0]}}</a></li>
+                  {% endfor %}
+                </ul>
+                </div>
+                <div class="tab-pane fade" id="data" role="tabpanel" aria-labelledby="data-tab">data</div>
+                <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">user</div>
+              </div>
+      
+      </div>
+{%endblock%}
+
